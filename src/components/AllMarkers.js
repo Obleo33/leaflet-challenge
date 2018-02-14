@@ -1,13 +1,14 @@
 /*eslint-disable no-unused-vars*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MapMarker from './Marker'
+import MapMarker from '../containers/MarkerContainer'
 
 class AllMarkers extends Component {
   render() {
     const markerArray = this.props.locations.map((marker, i) => {
+
       return (
-        <MapMarker
+        <MapMarker 
           key={i}
           location={[+marker.lat, +marker.lng]}
           name={marker.name}

@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import { Marker, Tooltip } from 'react-leaflet';
-import L from 'leaflet'
-import tealdot from '../imgs/tealdot.svg'
+import L from 'leaflet';
+import tealdot from '../imgs/tealdot.svg';
 
 class MapMarker extends Component {
+  constructor() {
+    super();
+    this.state = {
+      selected: 0,
+    };
+  }
+
+  handleClick(point) {
+    this.props.addPoint(point.location);
+  }
 
   render() {
     let icon = L.icon({
@@ -16,6 +26,7 @@ class MapMarker extends Component {
           <Marker
             position={this.props.location}
             icon={icon}
+            onClick={ () => this.handleClick(this.props) }
           >
             <Tooltip
               sticky
