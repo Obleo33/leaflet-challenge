@@ -23,5 +23,15 @@ const fetchAllLocations = () => {
   };
 };
 
+const addLocation = () => {
+  return (dispatch) => {
+    return fetch('/api/v1/locations', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 
+                  Accept: 'application/json',},
+    });
+  };
+};
+
 
 export { fetchAllLocations }

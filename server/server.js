@@ -42,15 +42,6 @@ app.get('/locations', (request, response) => {
   .catch(error => response.status(500).send(error)) 
 })
 
-
-// response.send({ locations: app.locals.locations }));
-
-  // app.get('/api/v1/garage', (request, response) => {
-  //   database('garage').select()
-  //   .then(items => response.status(200).json(items))
-  //   .catch(error => response.status(500).send(error));
-  // });
-
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
 // Always return the main index.html, so react-router render the route in the client
