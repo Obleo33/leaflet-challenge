@@ -2,9 +2,10 @@ require('isomorphic-fetch');
 
 
 const storeAllLocations = (locations) => {
+  console.log(locations);
   return {
     type: 'STORE_LOCATIONS',
-    data: locations.locations,
+    data: locations,
   };
 };
 
@@ -17,6 +18,7 @@ const fetchAllLocations = () => {
       },
     })
       .then(locations => locations.json())
+
       .then(json => dispatch(storeAllLocations(json)));
   };
 };

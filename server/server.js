@@ -36,7 +36,20 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 // app.locals.idIndex = 3;
 // app.locals.locations = initialLocations;
 
-app.get('/locations', (request, response) => response.send({ locations: app.locals.locations }));
+app.get('/locations', (request, response) => {
+  database('locations').select()
+  .then(locations => response.status(200).send(locations))
+  .catch(error => response.status(500).send(error)) 
+})
+
+
+// response.send({ locations: app.locals.locations }));
+
+  // app.get('/api/v1/garage', (request, response) => {
+  //   database('garage').select()
+  //   .then(items => response.status(200).json(items))
+  //   .catch(error => response.status(500).send(error));
+  // });
 
 app.use(express.static(path.resolve(__dirname, '..', 'build')));
 
