@@ -9,9 +9,9 @@ class Form extends Component {
   }
 
   submitForm(e, inputData) {
-    console.log(this.props);
     e.preventDefault();
     this.props.saveLocation(inputData);
+    this.props.addLocation(inputData)
     this.setState({ data: this.state.data = {} });
   }
 

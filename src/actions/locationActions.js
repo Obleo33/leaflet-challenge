@@ -29,12 +29,13 @@ const fetchAllLocations = () => {
   };
 };
 
-const addLocation = () => {
+const addLocation = ({name, lat, lng}) => {
   return (dispatch) => {
     return fetch('/api/v1/locations', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 
                   Accept: 'application/json',},
+      body: JSON.stringify({ name, lat, lng }),
     });
   };
 };
