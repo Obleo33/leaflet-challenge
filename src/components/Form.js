@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+const reg = /^(\-?\d+(\.\d+)?)/;
 
 class Form extends Component {
   submitForm(e, data) {
@@ -20,14 +21,14 @@ class Form extends Component {
           Lat
           <input
             ref={(input) => { this.lat = input }}
-            type="text"
+            type="number"
           />
         </label>
         <label>
           Lon
           <input
             ref={(input) => { this.lng = input }}
-            type="text"/>
+            type="number"/>
         </label>
         <button
           type="submit"
