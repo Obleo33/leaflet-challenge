@@ -9,6 +9,7 @@ class Form extends Component {
   }
 
   submitForm(e, inputData) {
+    console.log(this.props);
     e.preventDefault();
     this.props.saveLocation(inputData);
     this.setState({ data: this.state.data = {} });
@@ -17,10 +18,6 @@ class Form extends Component {
   handleChange(e){
     let updateData = Object.assign({}, this.state.data, {[e.target.id]: e.target.value})
     this.setState({ data: updateData });
-  }
-
-  handleSubmit() {
-
   }
 
   // validateLat(data) {
