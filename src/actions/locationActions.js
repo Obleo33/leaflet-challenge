@@ -41,4 +41,4 @@ const addLocation = ({name, lat, lng}) => {
 };
 
 
-export { fetchAllLocations, addLocation, saveLocation }
+export { fetchAllLocations, addLocation, saveLocation };
