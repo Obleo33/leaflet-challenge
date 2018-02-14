@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 
-const reg = /^(\-?\d+(\.\d+)?)/;
-
-// Latitude -90 and +90 
-// Longitude -180 and +180
-
 class Form extends Component {
   constructor() {
     super();
@@ -13,12 +8,10 @@ class Form extends Component {
     };
   }
 
-
-  submitForm(e, data) {
+  submitForm(e, inputData) {
     e.preventDefault();
-    this.validateLat(data)
-    this.validateLng(data)
-    this.props.saveLocation(data);
+    this.props.saveLocation(inputData);
+    this.setState({ data: this.state.data = {} });
   }
 
   handleChange(e){
@@ -58,7 +51,7 @@ class Form extends Component {
             onChange={this.handleChange.bind(this)}
             ref={(input) => { this.name = input }}
             type="text"
-            value={ this.state.data.name }
+            value={ this.state.data.name || ''}
           />
         </label>
         <label>
@@ -68,20 +61,19 @@ class Form extends Component {
             onChange={this.handleChange.bind(this)}
             ref={(input) => { this.lat = input }}
             type="number"
-            value={ this.state.data.lat }
+            value={ this.state.data.lat || '' }
           />
         </label>
-        { this.validateLat }
         <label>
           Lon
           <input
             id="lng"
             onChange={this.handleChange.bind(this)}
             ref={(input) => { this.lng = input }}
-            type="number"/>
-            value={ this.state.data.lng }
+            type="number"
+            value={ this.state.data.lng || ''}
+          />
         </label>
-        { this.validateLng }
         <button
           type="submit"
           onClick={(e) => this.submitForm(e, {
