@@ -2,9 +2,10 @@ require('isomorphic-fetch');
 
 
 const storeAllLocations = (locations) => {
+  console.log(locations);
   return {
     type: 'STORE_LOCATIONS',
-    data: locations.locations,
+    data: locations,
   };
 };
 
@@ -17,7 +18,18 @@ const fetchAllLocations = () => {
       },
     })
       .then(locations => locations.json())
+
       .then(json => dispatch(storeAllLocations(json)));
+  };
+};
+
+const addLocation = () => {
+  return (dispatch) => {
+    return fetch('/api/v1/locations', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 
+                  Accept: 'application/json',},
+    });
   };
 };
 
