@@ -1,7 +1,7 @@
 /*eslint-disable no-unused-vars*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import MapMarker from '../containers/MarkerContainer'
+import MapMarker from '../containers/MapMarkerContainer'
 
 class AllMarkers extends Component {
   render() {
