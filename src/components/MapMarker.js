@@ -12,7 +12,7 @@ class MapMarker extends Component {
   }
 
   handleClick(mapPoint) {
-    if (this.state.selected === 0) {
+    if (!this.state.selected) {
       this.props.addPoint(mapPoint);
     } else {
       this.props.fetchPoint(mapPoint, this.props.polygonArr)

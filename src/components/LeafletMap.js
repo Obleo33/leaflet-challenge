@@ -13,6 +13,7 @@ class LeafletMap extends Component {
     if (arr.length) {
       return arr.reduce((polygonArr, point) => {
         polygonArr.push(point.location)
+        console.log(this.props.polygonArr);
         return polygonArr
       },[]) 
     }
