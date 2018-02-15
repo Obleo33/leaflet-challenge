@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, ZoomControl, Polygon } from 'react-leaflet';
-import AllMarkers from '../containers/AllMarkersContainer'
+import AllMarkers from '../containers/AllMarkersContainer';
 
 class LeafletMap extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
     };
   }
 
-  render() {
-    const polygon = this.props.polygonArr
+  makePolygon(arr) {
+    console.log(arr);
+    if (arr.length) {
+      return arr.reduce((polygonArr, point) => {
+        polygonArr.push(point.location)
+        return polygonArr
+      },[]) 
+    }
+  }
 
+  render() {
+      const polygon = this.makePolygon(this.props.polygonArr) || []
     return (
       <div className="map-container">
         <Map
@@ -30,8 +39,8 @@ class LeafletMap extends Component {
           <ZoomControl
             position="bottomright"
           />
-          <AllMarkers />
           <Polygon color="purple" positions={polygon}/> 
+          <AllMarkers />
         </Map>
       </div>
     );

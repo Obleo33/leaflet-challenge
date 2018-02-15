@@ -13,11 +13,11 @@ class MapMarker extends Component {
 
   handleClick(point) {
     if (this.state.selected === 0) {
-      this.props.addPoint(point.location);
+      this.props.addPoint(point);
     } else {
-      this.props.removePoint(point.location)
+      this.props.fetchPoint(point, this.props.polygonArr)
     }
-      !this.state.selected
+      this.setState({ selected: !this.state.selected })
   }
 
   render() {
@@ -25,10 +25,10 @@ class MapMarker extends Component {
       iconUrl: tealdot,
       iconSize: [15, 15]
     });
-
     return (
       <div className="marker-container">
           <Marker
+            id={this.props.id}
             position={this.props.location}
             icon={icon}
             onClick={ () => this.handleClick(this.props) }
