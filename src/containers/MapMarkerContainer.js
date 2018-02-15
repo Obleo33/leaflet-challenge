@@ -1,14 +1,14 @@
 import { connect } from 'react-redux'
 import MapMarker from '../components/MapMarker'
 import { bindActionCreators } from 'redux';
-import { addPoint } from '../actions/polygonActions';
+import { addPoint, fetchPoint } from '../actions/polygonActions';
 
 const mapStateToProps = (state) => {
-  return { };
+  return { polygonArr: state.PolygonArr };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ addPoint }, dispatch)
+  return bindActionCreators({ addPoint, fetchPoint }, dispatch)
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapMarker);

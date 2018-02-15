@@ -5,37 +5,39 @@ class Form extends Component {
     super();
     this.state = {
       data: {},
+      latValid: 0,
+      lngValid: 0,
     };
   }
 
   submitForm(e, inputData) {
     e.preventDefault();
-    this.props.saveLocation(inputData);
-    this.props.addLocation(inputData)
+    this.props.addLocation(this.props.saveLocation(inputData))
     this.setState({ data: this.state.data = {} });
   }
 
   handleChange(e){
     let updateData = Object.assign({}, this.state.data, {[e.target.id]: e.target.value})
     this.setState({ data: updateData });
+    // this.validateLat(this.state.latValid);
+    // this.validateLng(this.state.lngValid);
   }
 
   // validateLat(data) {
-  //   if (data.lat < -90 || data.lat > 90) {
-  //     console.log('lat off');
-  //     return (
-  //       <div className="lat-warrning">Latitude must be between -90 and 90</div>
-  //     )
-  //   }
+  //   console.log(data);
+  //   if (data.lat !== undefined && data.lat >= -90 || data.lat <= 90) {
+  //     return this.setState({ latValid: true });
+  //   } 
+
+  //   return this.setState({ latValid: false });
   // }
 
   // validateLng(data) {
-  //   if (data.lng < -180 || data.lng > 180) {
-  //     console.log('lng off');
-  //     return (
-  //       <div className="lng-warning">Longitude must be between -180 and 180</div>
-  //     )
-  //   }
+  //   if (data.lat === '' || data.lng >= -180 || data.lng <= 180) {
+  //     return this.setState({ lngValid: true });
+  //   } 
+    
+  //   return this.setState({ lngValid: false });
   // }
 
   render() {
@@ -88,3 +90,6 @@ class Form extends Component {
 
 
 export default Form;
+
+          // { this.validateLng() && <div className="lng-warning">Longitude must be between -180 and 180</div>}
+          // { this.validateLat() && <div className="lat-warrning">Latitude must be between -90 and 90</div>}

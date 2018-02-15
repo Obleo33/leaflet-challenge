@@ -7,7 +7,7 @@ const PolygonArr = (state = initialState, action) => {
     case 'ADD_POINT':
       return [...state, action.data];
     case 'REMOVE_POINT':
-      return [];
+      return [...action.data];
     default:
       return state;
   }
