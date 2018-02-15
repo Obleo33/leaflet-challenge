@@ -10,7 +10,6 @@ class LeafletMap extends Component {
   }
 
   makePolygon(arr) {
-    console.log(arr);
     if (arr.length) {
       return arr.reduce((polygonArr, point) => {
         polygonArr.push(point.location)

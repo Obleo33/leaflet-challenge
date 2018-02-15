@@ -1,7 +1,7 @@
-const addPoint = (point) => {
+const addPoint = (mapPoint) => {
   return {
     type: 'ADD_POINT',
-    data: point,
+    data: mapPoint,
   };
 };
 
@@ -12,33 +12,11 @@ const removePoint = (polygonArr) => {
   };
 };
 
-
-const fetchPoint = (coordinate, polygonArr) => {
-  
-  const updatedArr = polygonArr.filtter(point => point !== coordinate)
-
-  // return dispatch(removePoint(polygonArr));
+const fetchPoint = (mapPoint, polygonArr) => {
+  const updatedArr = polygonArr.filter(arrPoint => {
+    return arrPoint.markerID !== mapPoint.markerID;
+  });
+  return removePoint(updatedArr);
 };
 
-
-
 export { addPoint, fetchPoint };
-// export const removeFromCollection = (id, collection) => {
-//   const newCollection = collection.filter(game => game.id !== id)
-
-//   return dispatch => dispatch(removeCollection(newCollection))
-// }
-
-// const fetchAllLocations = () => {
-//   return (dispatch) => {
-//     return fetch('/locations', {
-//       headers: {
-//         'Content-Type': 'application/json',
-//         Accept: 'application/json',
-//       },
-//     })
-//       .then(locations => locations.json())
-
-//       .then(json => dispatch(storeAllLocations(json)));
-//   };
-// };
