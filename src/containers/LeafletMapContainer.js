@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 import { saveLocation, addLocation } from '../actions/locationActions';
 
 const mapStateToProps = (state) => {
-  return {};
+	console.log(state.PolygonArr);
+  return { polygonArr: state.PolygonArr };
 };
 
 const mapDispatchToProps = (dispatch) => {

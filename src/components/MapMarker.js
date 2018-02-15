@@ -12,7 +12,7 @@ class MapMarker extends Component {
   }
 
   handleClick(point) {
-    if (this.selected === 0) {
+    if (this.state.selected === 0) {
       this.props.addPoint(point.location);
     } else {
       this.props.removePoint(point.location)
