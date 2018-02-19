@@ -12,33 +12,14 @@ class Form extends Component {
 
   submitForm(e, inputData) {
     e.preventDefault();
-    this.props.addLocation(this.props.saveLocation(inputData))
+    this.props.addLocation(this.props.saveLocation(inputData).data)
     this.setState({ data: this.state.data = {} });
   }
 
   handleChange(e){
     let updateData = Object.assign({}, this.state.data, {[e.target.id]: e.target.value})
     this.setState({ data: updateData });
-    // this.validateLat(this.state.latValid);
-    // this.validateLng(this.state.lngValid);
   }
-
-  // validateLat(data) {
-  //   console.log(data);
-  //   if (data.lat !== undefined && data.lat >= -90 || data.lat <= 90) {
-  //     return this.setState({ latValid: true });
-  //   } 
-
-  //   return this.setState({ latValid: false });
-  // }
-
-  // validateLng(data) {
-  //   if (data.lat === '' || data.lng >= -180 || data.lng <= 180) {
-  //     return this.setState({ lngValid: true });
-  //   } 
-    
-  //   return this.setState({ lngValid: false });
-  // }
 
   render() {
     return (
